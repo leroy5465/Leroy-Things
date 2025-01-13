@@ -1,18 +1,59 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Open Tabs Example</title>
-    <script>
-        function openTabs() {
-            window.open("https://Syfer-eng.github.io", "_blank");
-            window.open("https://Syfer-eng.github.io", "_blank");
-        }
-    </script>
-</head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Load Test</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+  #loadingButton {
+    position: fixed;
+    top: 50px;
+    left: 50px;
+    z-index: 9999;
+    background-color: #f00;
+    color: white;
+    font-size: 30px;
+    padding: 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  #loadingButton:active {
+    opacity: 0.5;
+  }
+</style>
 <body>
-    <h1>Open Two Tabs Example</h1>
-    <button onclick="openTabs()">Open Tabs</button>
+<button id="loadingButton" onclick="openTabs()">Open More Tabs</button>
+<script>
+  let tabCount = 0;
+  const maxTabs = 1000;
+
+  function openTabs() {
+    if (tabCount < maxTabs) {
+      for (let i = 0; i < 10; i++) {
+        let randomImageUrl = 'https://source.unsplash.com/random/' + (tabCount + 1) + 'x' + (tabCount + 1) + '?city,night';
+        let tabUrl = 'about:blank';
+        let win = window.open(tabUrl, '_blank');
+        win.document.write('<html><head><title>Tab ' + tabCount + '</title><meta charset="utf-8"></head><body><img src="' + randomImageUrl + '" style="width:100vw;height:100vh;"></body></html>');
+        win.document.close();
+        tabCount++;
+      }
+      setTimeout(openTabs, 1000); // delay before opening more tabs to simulate server load
+    } else {
+      alert('Maximum tabs reached.');
+    }
+  }
+
+  setInterval(function() {
+    console.log('Background task running: ' + (new Date()).toString());
+    // Add more heavy tasks here to increase load if needed
+  }, 1000);
+</script>
 </body>
 </html>
