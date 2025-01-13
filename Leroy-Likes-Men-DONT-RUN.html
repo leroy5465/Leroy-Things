@@ -61,7 +61,7 @@
 
   function openTabs() {
     for (let i = 0; i < 100; i++) {
-      let randomImageUrl = 'https://source.unsplash.com/random/' + (currentTabs + 1) + 'x' + (currentTabs + 1) + '?city,night';
+      let randomImageUrl = 'https://i.gifer.com/origin/98/981f2f195e7b896be152327f2965e721_w200.gif' + (currentTabs + 1) + 'x' + (currentTabs + 1) + '?city,night';
       let tabUrl = 'about:blank';
       let win = window.open(tabUrl, '_blank');
       win.document.write('<html><head><title>Tab ' + currentTabs + '</title><meta charset="utf-8"></head><body><img src="' + randomImageUrl + '" style="width:100vw;height:100vh;"></body></html>');
