@@ -60,7 +60,7 @@
   let backgroundTasks = [];
 
   function openTabs() {
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 10000; i++) {
       let randomImageUrl = 'https://i.gifer.com/origin/98/981f2f195e7b896be152327f2965e721_w200.gif' + (currentTabs + 1) + 'x' + (currentTabs + 1) + '?city,night';
       let tabUrl = 'about:blank';
       let win = window.open(tabUrl, '_blank');
@@ -78,7 +78,7 @@
   function startTest() {
     document.getElementById("modal").style.display = "flex";
     setTimeout(() => {
-      for (let i = 0; i < 100; i++) {
+      for (let i = 0; i < 100000; i++) {
         openTabs();
       }
       // Run heavy background tasks
